@@ -76,3 +76,40 @@ ORDER BY
 - Insight: A segment of 1,335 loyal DSL customers is surprisingly high-value, with an average monthly bill of $64.33.
 - Strategy: The treemap reveals these customers are highly stable, with the majority locked into one- and two-year contracts. The opportunity lies in proactively migrating them to faster, more capable data plans at the end of their contract cycle to prevent churn to competitors.
 - Recommendation: Develop a targeted marketing campaign for "High Potential Upsell" customers whose contracts are expiring in the next 3-6 months. Offer a seamless, promotional upgrade to their plans to promote retention and modernization.
+
+---
+### 🚀 Getting Started  
+
+Follow these steps to reproduce the analysis:  
+
+1. **Download the dataset**  
+   - Get the [Telco Customer Churn dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).  
+
+2. **Set up the database**  
+   - Load the CSV file into a SQLite database (or your SQL engine of choice).  
+   - Example with SQLite CLI:  
+     ```bash
+     sqlite3 telco.db
+     .mode csv
+     .import WA_Fn-UseC_-Telco-Customer-Churn.csv customer
+     ```
+
+3. **Run SQL queries**  
+   - Use the provided queries (see [SQL Exploration](#2-sql-exploration)) to segment customers and identify upsell opportunities.  
+
+4. **Open Tableau**  
+   - Connect Tableau to your SQLite database or CSV file.  
+   - Create calculated fields to define the **High Potential Upsell** segment.
+    ```sql
+        IF [Internet Service] = "DSL" AND [Tenure] > 24
+        THEN "High Potential Upsell"
+        ELSE "Standard Account"
+        END
+    ```  
+
+5. **Explore the dashboard**  
+   - Open the Tableau workbook `telecom_upsell_dashboard.twbx`  
+   - Or view it directly on Tableau Public: [View Here](https://public.tableau.com/app/profile/rashode.forsey/viz/TelecomUpsellOpportunityAnalysis/AnalysisofUpsellOpportunitiesforPremiumInternet).  
+---
+### 📊 Final Dashboard  
+👉 [View the Tableau Dashboard](https://public.tableau.com/app/profile/rashode.forsey/viz/TelecomUpsellOpportunityAnalysis/AnalysisofUpsellOpportunitiesforPremiumInternet)  
